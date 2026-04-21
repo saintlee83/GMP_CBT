@@ -69,6 +69,124 @@ def strip_option_bold(text: str) -> str:
     return "\n".join(cleaned)
 
 
+def _parse_table_row(row: str) -> list[str]:
+    """| a | b | c | 형태의 한 줄에서 셀만 추출."""
+    inner = row.strip()
+    if inner.startswith("|"):
+        inner = inner[1:]
+    if inner.endswith("|"):
+        inner = inner[:-1]
+    return [c.strip() for c in inner.split("|")]
+
+
+def extract_options(stem_text: str) -> tuple[list[str] | None, str]:
+    """문제 본문에서 선택지 5개를 추출한다. 본문에서 제거한 스템을 함께 반환.
+
+    우선순위:
+    1) 연속된 5개의 ``①~⑤`` 인라인 라인 → 각 라인의 텍스트를 그대로 선택지로 사용
+    2) 5개의 ``| ①~⑤ | ... |`` 표 행 → 헤더 행과 결합해 "헤더: 값" 포맷으로 결합
+
+    모두 실패하면 ``(None, stem_text)`` 반환.
+    """
+    lines = stem_text.split("\n")
+    circles = "①②③④⑤"
+
+    # 1) 인라인 연속 5줄
+    for start in range(len(lines) - 4):
+        ok = True
+        for offset in range(5):
+            line = lines[start + offset]
+            expected = circles[offset]
+            if not re.match(rf"^\s*{expected}\s+\S", line):
+                ok = False
+                break
+        if ok:
+            options = []
+            for offset in range(5):
+                line = lines[start + offset].lstrip()
+                # 동그라미 뒤 공백 제거
+                options.append(line[1:].strip())
+            new_lines = lines[:start] + lines[start + 5:]
+            # 앞뒤에 남는 공백 라인 정리
+            new_stem = "\n".join(new_lines).strip()
+            return options, new_stem
+
+    # 2) 표 형식: 연속된 `| ①~⑤ | ... |` 5행
+    row_indices: list[int] = []
+    for i, line in enumerate(lines):
+        m = re.match(r"^\|\s*([①②③④⑤])\s*\|", line)
+        if m:
+            row_indices.append(i)
+
+    # 5행이 연속되어 있고 순서대로 ①~⑤ 인 경우만 처리
+    if len(row_indices) >= 5:
+        for start in range(len(row_indices) - 4):
+            chunk = row_indices[start:start + 5]
+            # 인접해 있는지 (구분선 허용 X, 이미 row_indices 는 본 행만 모음)
+            if chunk[-1] - chunk[0] != 4:
+                continue
+            # 순서대로 ①~⑤ 인지
+            ok = True
+            for off in range(5):
+                line = lines[chunk[off]]
+                if not line.lstrip().startswith(f"| {circles[off]}") and not line.lstrip().startswith(f"|{circles[off]}"):
+                    m = re.match(r"^\|\s*([①②③④⑤])\s*\|", line)
+                    if not m or m.group(1) != circles[off]:
+                        ok = False
+                        break
+            if not ok:
+                continue
+
+            first_row = chunk[0]
+
+            # 헤더행 찾기: first_row 바로 위를 거슬러 올라가 --- 구분선 → 헤더행
+            header_idx: int | None = None
+            sep_idx: int | None = None
+            for j in range(first_row - 1, -1, -1):
+                raw = lines[j].strip()
+                if not raw:
+                    continue
+                if re.match(r"^\|\s*[-:\s|]+\|?\s*$", raw):
+                    sep_idx = j
+                    continue
+                if raw.startswith("|"):
+                    header_idx = j
+                    break
+                break
+
+            if header_idx is None or sep_idx is None:
+                continue
+
+            header_cells = _parse_table_row(lines[header_idx])
+            options: list[str] = []
+            for idx in chunk:
+                row_cells = _parse_table_row(lines[idx])
+                # 첫 셀이 ①~⑤ 이므로 제외
+                row_cells = row_cells[1:]
+                hdrs = header_cells[1:] if len(header_cells) == len(row_cells) + 1 else header_cells
+                pairs: list[str] = []
+                for h, v in zip(hdrs, row_cells):
+                    h = h.strip()
+                    v = v.strip()
+                    if not v:
+                        continue
+                    if h:
+                        pairs.append(f"{h}: {v}")
+                    else:
+                        pairs.append(v)
+                options.append(" · ".join(pairs) if pairs else "")
+
+            # 표 전체(헤더+구분선+5행) 제거
+            remove = set(range(header_idx, chunk[-1] + 1))
+            new_lines = [l for i, l in enumerate(lines) if i not in remove]
+            new_stem = "\n".join(new_lines).strip()
+            # 여분 공백 라인 축소
+            new_stem = re.sub(r"\n{3,}", "\n\n", new_stem)
+            return options, new_stem
+
+    return None, stem_text
+
+
 def dequote_explanation(text: str) -> str:
     """`> 해설: ...` 블록 쿼트 해설 텍스트를 일반 마크다운으로 변환.
 
@@ -141,8 +259,12 @@ def parse_question_block(block: str, q_num: int, chapter_key: str) -> dict | Non
     if is_short and q_type == "multiple_choice":
         # 헤더에 단답형 표기가 있지만 정답이 번호 형태인 경우 → 객관식으로 처리
         q_type = "multiple_choice"
+    options: list[str] | None = None
     if q_type == "multiple_choice":
+        # 1) 정답 강조 ** 제거
         question_content = strip_option_bold(question_content)
+        # 2) 선택지 추출 및 본문에서 분리
+        options, question_content = extract_options(question_content)
         correct_label = NUM_TO_CIRCLE[int(correct)]
     else:
         correct_label = str(correct)
@@ -179,7 +301,7 @@ def parse_question_block(block: str, q_num: int, chapter_key: str) -> dict | Non
     # 푸터 '**CH01 합계: ...**' 제거
     explanation = re.sub(r"\*\*CH\d+\s*합계.*$", "", explanation).strip()
 
-    return {
+    result = {
         "id": f"{chapter_key}-{q_num:03d}",
         "chapter": chapter_key,
         "number": q_num,
@@ -190,6 +312,9 @@ def parse_question_block(block: str, q_num: int, chapter_key: str) -> dict | Non
         "correctAnswerLabel": correct_label,
         "explanation": explanation,
     }
+    if options is not None:
+        result["options"] = options
+    return result
 
 
 def parse_chapter_file(path: Path) -> dict | None:

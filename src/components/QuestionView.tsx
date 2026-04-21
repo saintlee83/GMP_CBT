@@ -90,7 +90,7 @@ export default function QuestionView({
       <MarkdownView content={question.question} />
 
       {question.type === "multiple_choice" ? (
-        <div className="mt-5 space-y-2">
+        <div className="mt-5 space-y-2.5">
           {options.map((n, idx) => {
             let state: "idle" | "correct" | "wrong" | "reveal" = "idle";
             if (reveal) {
@@ -100,11 +100,13 @@ export default function QuestionView({
                 state = "wrong";
               }
             }
+            const optionText =
+              question.options?.[idx] ?? `보기 ${circle[idx]} 선택`;
             return (
               <OptionButton
                 key={n}
                 label={circle[idx]}
-                text={`보기 ${circle[idx]} 선택`}
+                text={optionText}
                 selected={selected === n}
                 disabled={submitted}
                 state={state}
@@ -112,10 +114,6 @@ export default function QuestionView({
               />
             );
           })}
-          <p className="mt-2 text-xs text-slate-500">
-            ※ 보기의 상세 내용은 위 문제 본문에 표/목록으로 표시됩니다. 해당
-            번호를 선택하세요.
-          </p>
         </div>
       ) : (
         <div className="mt-5">

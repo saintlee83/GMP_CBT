@@ -7,6 +7,7 @@ export interface Question {
   index: number;
   type: QuestionType;
   question: string;
+  options?: string[];
   correctAnswer: number | string;
   correctAnswerLabel: string;
   explanation: string;
