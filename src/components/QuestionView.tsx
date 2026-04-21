@@ -169,9 +169,10 @@ export default function QuestionView({
             </span>
           </div>
           {question.explanation && (
-            <div className="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap">
-              {question.explanation}
-            </div>
+            <MarkdownView
+              content={question.explanation}
+              className="md-question md-explanation text-sm text-slate-700"
+            />
           )}
         </div>
       )}

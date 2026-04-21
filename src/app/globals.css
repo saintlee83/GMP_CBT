@@ -91,6 +91,26 @@ body {
   border-radius: 4px;
 }
 
+/* 해설은 조금 더 컴팩트하게 */
+.md-explanation p {
+  margin: 0.25em 0;
+}
+
+.md-explanation ul,
+.md-explanation ol {
+  margin: 0.35em 0;
+  padding-left: 1.25rem;
+}
+
+.md-explanation li {
+  margin: 0.15em 0;
+}
+
+.md-explanation blockquote {
+  background: #fafafa;
+  border-left-color: #94a3b8;
+}
+
 /* 반응형 테이블 wrap */
 @media (max-width: 640px) {
   .md-question table {
