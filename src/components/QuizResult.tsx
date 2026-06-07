@@ -72,7 +72,7 @@ export default function QuizResult({
           href={backHref || "/"}
           className="flex-1 text-center bg-white border border-slate-300 text-slate-700 font-semibold py-3 rounded-xl hover:bg-slate-50 transition"
         >
-          홈으로
+          목록으로
         </Link>
       </div>
 

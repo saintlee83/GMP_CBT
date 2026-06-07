@@ -1,13 +1,15 @@
 import rawData from "@data/questions.json";
-import type { Chapter, Question, QuestionsData } from "./types";
+import type { Chapter, ExamGroup, Question, QuestionsData } from "./types";
 
 const data = rawData as QuestionsData;
 
-export const chapters: Chapter[] = data.chapters;
+/** 상위 시험 카테고리 (중간고사 / 기말고사) */
+export const exams: ExamGroup[] = data.exams;
 
-export const allQuestions: Question[] = data.chapters.flatMap(
-  (ch) => ch.questions,
-);
+/** 모든 챕터 (시험 그룹 순서대로 평탄화) */
+export const chapters: Chapter[] = exams.flatMap((e) => e.chapters);
+
+export const allQuestions: Question[] = chapters.flatMap((ch) => ch.questions);
 
 const questionIndex = new Map<string, Question>(
   allQuestions.map((q) => [q.id, q]),
@@ -24,6 +26,15 @@ export function getChapterByKey(key: string): Chapter | undefined {
 export function getQuestionsForChapter(key: string): Question[] {
   const ch = getChapterByKey(key);
   return ch ? ch.questions : [];
+}
+
+export function getExamByKey(key: string): ExamGroup | undefined {
+  return exams.find((e) => e.key === key);
+}
+
+export function getQuestionsForExam(key: string): Question[] {
+  const e = getExamByKey(key);
+  return e ? e.chapters.flatMap((ch) => ch.questions) : [];
 }
 
 export function totalQuestionCount(): number {

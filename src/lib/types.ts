@@ -17,11 +17,22 @@ export interface Chapter {
   key: string;
   number: number;
   name: string;
+  /** 소속 시험 그룹 key ("midterm" | "final") */
+  exam: string;
   questions: Question[];
 }
 
-export interface QuestionsData {
+/** 중간고사 / 기말고사 등 상위 시험 카테고리 */
+export interface ExamGroup {
+  key: string; // "midterm" | "final"
+  number: number; // 정렬 순서
+  name: string; // "중간고사" | "기말고사"
+  description?: string; // 시험범위 설명
   chapters: Chapter[];
+}
+
+export interface QuestionsData {
+  exams: ExamGroup[];
 }
 
 export type QuizMode =

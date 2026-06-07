@@ -46,6 +46,28 @@ DATA_DIR = ROOT / "data"
 CIRCLE_TO_NUM = {"①": 1, "②": 2, "③": 3, "④": 4, "⑤": 5}
 NUM_TO_CIRCLE = {v: k for k, v in CIRCLE_TO_NUM.items()}
 
+# 상위 시험 카테고리 정의.
+#   - glob: problems/ 안에서 매칭할 챕터 파일 패턴
+#   - prefix: 챕터 key 접두사 (예: "CH" -> CH01, "CL" -> CL03). 그룹 간 key 충돌 방지.
+EXAM_GROUPS = [
+    {
+        "key": "midterm",
+        "number": 1,
+        "name": "중간고사",
+        "description": "2021 의료기기 RA 전문가 2급 핵심문제집 PART 04 품질관리(GMP)",
+        "glob": "GMP_CH*.md",
+        "prefix": "CH",
+    },
+    {
+        "key": "final",
+        "number": 2,
+        "name": "기말고사",
+        "description": "2021 의료기기 RA 전문가 2급 핵심문제집 PART 05 임상 (임상시험의 실시 / 통계적 원칙 및 관련 문서)",
+        "glob": "CL_CH*.md",
+        "prefix": "CL",
+    },
+]
+
 
 def strip_option_bold(text: str) -> str:
     """객관식 문제 본문에서 정답을 강조한 ``**`` 마크만 제거.
@@ -317,7 +339,7 @@ def parse_question_block(block: str, q_num: int, chapter_key: str) -> dict | Non
     return result
 
 
-def parse_chapter_file(path: Path) -> dict | None:
+def parse_chapter_file(path: Path, prefix: str, exam_key: str) -> dict | None:
     text = path.read_text(encoding="utf-8")
     lines = text.split("\n")
     if not lines:
@@ -335,7 +357,7 @@ def parse_chapter_file(path: Path) -> dict | None:
 
     chapter_num = int(header_m.group(1))
     chapter_name = header_m.group(2).strip()
-    chapter_key = f"CH{chapter_num:02d}"
+    chapter_key = f"{prefix}{chapter_num:02d}"
 
     # 2. ## QN. 블록 수집
     questions: list[dict] = []
@@ -360,6 +382,7 @@ def parse_chapter_file(path: Path) -> dict | None:
         "key": chapter_key,
         "number": chapter_num,
         "name": chapter_name,
+        "exam": exam_key,
         "questions": questions,
     }
 
@@ -367,31 +390,57 @@ def parse_chapter_file(path: Path) -> dict | None:
 def main() -> None:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-    files = sorted(PROBLEMS_DIR.glob("GMP_CH*.md"))
-    if not files:
-        raise SystemExit(f"챕터 파일을 찾을 수 없습니다: {PROBLEMS_DIR}/GMP_CH*.md")
-
-    chapters: list[dict] = []
+    exams: list[dict] = []
     total_q = 0
-    for f in files:
-        ch = parse_chapter_file(f)
-        if ch is None:
-            print(f"skip (no chapter header): {f.name}")
+    for group in EXAM_GROUPS:
+        files = sorted(PROBLEMS_DIR.glob(group["glob"]))
+        if not files:
+            print(f"skip (파일 없음): {group['name']} <- {group['glob']}")
             continue
-        chapters.append(ch)
-        qs = ch["questions"]
-        mc = sum(1 for q in qs if q["type"] == "multiple_choice")
-        sa = sum(1 for q in qs if q["type"] == "short_answer")
-        total_q += len(qs)
-        print(
-            f"  {ch['key']} {ch['name']} ({f.name}): "
-            f"{len(qs)}문제 (객관식 {mc}, 단답형 {sa})"
+
+        chapters: list[dict] = []
+        print(f"[{group['name']}] ({group['key']})")
+        for f in files:
+            ch = parse_chapter_file(f, group["prefix"], group["key"])
+            if ch is None:
+                print(f"  skip (no chapter header): {f.name}")
+                continue
+            chapters.append(ch)
+            qs = ch["questions"]
+            mc = sum(1 for q in qs if q["type"] == "multiple_choice")
+            sa = sum(1 for q in qs if q["type"] == "short_answer")
+            total_q += len(qs)
+            print(
+                f"  {ch['key']} {ch['name']} ({f.name}): "
+                f"{len(qs)}문제 (객관식 {mc}, 단답형 {sa})"
+            )
+
+        if not chapters:
+            continue
+        # 챕터 정렬 (number 기준)
+        chapters.sort(key=lambda c: c["number"])
+        exams.append(
+            {
+                "key": group["key"],
+                "number": group["number"],
+                "name": group["name"],
+                "description": group["description"],
+                "chapters": chapters,
+            }
         )
 
-    data = {"chapters": chapters}
+    if not exams:
+        raise SystemExit(f"챕터 파일을 찾을 수 없습니다: {PROBLEMS_DIR}")
+
+    exams.sort(key=lambda e: e["number"])
+    data = {"exams": exams}
     dst = DATA_DIR / "questions.json"
     dst.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"\nTotal {total_q} questions across {len(chapters)} chapters")
+    n_ch = sum(len(e["chapters"]) for e in exams)
+    print(
+        f"\nTotal {total_q} questions across {n_ch} chapters "
+        f"in {len(exams)} exam group(s)"
+    )
     print(f"Wrote {dst}")
 
 
