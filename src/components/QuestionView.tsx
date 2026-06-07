@@ -16,6 +16,34 @@ interface Props {
   onAnswer: (value: number | string, correct: boolean) => void;
 }
 
+interface AnswerPart {
+  label: string; // ㄱ, ㄴ, ㄷ, ...
+  value: string; // 해당 파트의 정답 본문
+}
+
+// "ㄱ. 안전성, ㄴ. 유효성" / "ㄱ.1, ㄴ.1, ㄷ.3" 류 정답을 파트로 분해.
+// 2개 이상 파트로 쪼개지는 경우에만 배열 반환, 그 외에는 null.
+function parseAnswerParts(raw: string): AnswerPart[] | null {
+  if (!/[ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎ]\./.test(raw)) return null;
+  const segments = raw.split(",").map((s) => s.trim()).filter(Boolean);
+  const parts: AnswerPart[] = [];
+  for (const seg of segments) {
+    const m = seg.match(/^([ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎ])\.\s*(.+)$/);
+    if (!m) return null;
+    parts.push({ label: m[1], value: m[2].trim() });
+  }
+  return parts.length >= 2 ? parts : null;
+}
+
+const normalize = (s: string) => s.replace(/\s+/g, "").toLowerCase();
+
+function isPartMatch(user: string, expected: string): boolean {
+  const u = normalize(user);
+  const a = normalize(expected);
+  if (!u || !a) return false;
+  return u === a || a.includes(u) || u.includes(a);
+}
+
 export default function QuestionView({
   question,
   immediate,
@@ -23,14 +51,30 @@ export default function QuestionView({
   forceReveal,
   onAnswer,
 }: Props) {
+  const answerParts = useMemo(
+    () =>
+      question.type === "short_answer"
+        ? parseAnswerParts(String(question.correctAnswer))
+        : null,
+    [question],
+  );
+
   const [selected, setSelected] = useState<number | string | null>(
     initialAnswer ?? null,
   );
   const [shortInput, setShortInput] = useState<string>(
-    typeof initialAnswer === "string" ? initialAnswer : "",
+    typeof initialAnswer === "string" && !answerParts ? initialAnswer : "",
   );
+  const [multiInputs, setMultiInputs] = useState<string[]>(() => {
+    if (!answerParts) return [];
+    if (typeof initialAnswer === "string" && initialAnswer) {
+      const saved = initialAnswer.split(",").map((s) => s.trim());
+      return answerParts.map((_, i) => saved[i] ?? "");
+    }
+    return answerParts.map(() => "");
+  });
   const [submitted, setSubmitted] = useState<boolean>(
-    forceReveal || initialAnswer !== undefined && initialAnswer !== null,
+    forceReveal || (initialAnswer !== undefined && initialAnswer !== null),
   );
 
   const reveal = forceReveal || (immediate && submitted);
@@ -40,15 +84,14 @@ export default function QuestionView({
     if (question.type === "multiple_choice") {
       return selected === question.correctAnswer;
     }
-    const user = (shortInput || "").trim();
-    const ans = String(question.correctAnswer || "").trim();
-    if (!user || !ans) return false;
-    // 단답형: 원문에 사용자가 입력한 키워드가 포함되거나 그 반대인 경우 정답으로 간주
-    const norm = (s: string) => s.replace(/\s+/g, "").toLowerCase();
-    const nu = norm(user);
-    const na = norm(ans);
-    return nu === na || na.includes(nu) || nu.includes(na);
-  }, [submitted, selected, shortInput, question]);
+    if (answerParts) {
+      if (multiInputs.length !== answerParts.length) return false;
+      return answerParts.every((p, i) =>
+        isPartMatch(multiInputs[i] || "", p.value),
+      );
+    }
+    return isPartMatch(shortInput, String(question.correctAnswer || ""));
+  }, [submitted, selected, shortInput, multiInputs, answerParts, question]);
 
   function handleSelect(optionNumber: number) {
     if (submitted) return;
@@ -64,11 +107,19 @@ export default function QuestionView({
 
   function handleShortSubmit() {
     if (submitted) return;
+    if (answerParts) {
+      const trimmed = multiInputs.map((s) => s.trim());
+      if (trimmed.some((s) => !s)) return;
+      const correct = answerParts.every((p, i) =>
+        isPartMatch(trimmed[i], p.value),
+      );
+      setSubmitted(true);
+      onAnswer(trimmed.join(", "), correct);
+      return;
+    }
     const user = shortInput.trim();
     if (!user) return;
-    const ans = String(question.correctAnswer || "").trim();
-    const norm = (s: string) => s.replace(/\s+/g, "").toLowerCase();
-    const correct = norm(user) === norm(ans) || norm(ans).includes(norm(user));
+    const correct = isPartMatch(user, String(question.correctAnswer || ""));
     setSubmitted(true);
     onAnswer(user, correct);
   }
@@ -114,6 +165,44 @@ export default function QuestionView({
               />
             );
           })}
+        </div>
+      ) : answerParts ? (
+        <div className="mt-5">
+          <label className="block text-sm font-semibold text-slate-700 mb-2">
+            정답 입력 ({answerParts.length}개)
+          </label>
+          <div className="space-y-2">
+            {answerParts.map((part, idx) => (
+              <div key={idx} className="flex items-center gap-2">
+                <span className="shrink-0 w-8 text-center text-sm font-semibold text-slate-600">
+                  {part.label}.
+                </span>
+                <input
+                  type="text"
+                  value={multiInputs[idx] ?? ""}
+                  onChange={(e) => {
+                    const next = [...multiInputs];
+                    next[idx] = e.target.value;
+                    setMultiInputs(next);
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") handleShortSubmit();
+                  }}
+                  disabled={submitted}
+                  placeholder={`${part.label} 정답`}
+                  className="flex-1 border-2 border-slate-200 focus:border-brand-500 rounded-lg px-3 py-2.5 text-sm disabled:bg-slate-50"
+                />
+              </div>
+            ))}
+          </div>
+          <button
+            type="button"
+            onClick={handleShortSubmit}
+            disabled={submitted || multiInputs.some((s) => !s.trim())}
+            className="mt-3 w-full bg-brand-600 text-white font-semibold py-2.5 rounded-lg hover:bg-brand-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-sm"
+          >
+            제출
+          </button>
         </div>
       ) : (
         <div className="mt-5">
