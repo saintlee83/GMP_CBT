@@ -28,6 +28,7 @@ export default function ExamChooserCard({ exam, accent = "brand" }: Props) {
   return (
     <Link
       href={`/exam/${exam.key}`}
+      aria-label={`${exam.name} 시험범위로 이동`}
       className={`group bg-white rounded-2xl p-6 border border-slate-200 ${c.ring} hover:shadow-lg transition flex flex-col gap-3`}
     >
       <div className="flex items-center justify-between">
@@ -37,6 +38,7 @@ export default function ExamChooserCard({ exam, accent = "brand" }: Props) {
           {exam.name}
         </span>
         <svg
+          aria-hidden="true"
           className={`w-6 h-6 ${c.arrow} group-hover:translate-x-1 transition`}
           fill="none"
           stroke="currentColor"

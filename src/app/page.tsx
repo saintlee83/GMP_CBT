@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { chapters, exams, totalQuestionCount } from "@/lib/data";
+import { accentForExam } from "@/lib/examTheme";
 import ExamChooserCard from "@/components/ExamChooserCard";
-
-const ACCENTS = ["brand", "emerald"] as const;
 
 export default function HomePage() {
   return (
@@ -44,11 +43,11 @@ export default function HomePage() {
           시험범위 선택
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {exams.map((exam, i) => (
+          {exams.map((exam) => (
             <ExamChooserCard
               key={exam.key}
               exam={exam}
-              accent={ACCENTS[i % ACCENTS.length]}
+              accent={accentForExam(exam.key)}
             />
           ))}
         </div>
@@ -68,6 +67,7 @@ export default function HomePage() {
           >
             통합 모의고사 시작
             <svg
+              aria-hidden="true"
               className="w-4 h-4"
               fill="none"
               stroke="currentColor"

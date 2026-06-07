@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { exams, getExamByKey } from "@/lib/data";
+import { accentForExam } from "@/lib/examTheme";
 import ExamSection from "@/components/ExamSection";
 
 export function generateStaticParams() {
@@ -15,7 +16,7 @@ export default function ExamPage({ params }: PageProps) {
   const exam = getExamByKey(params.examKey);
   if (!exam) notFound();
 
-  const accent = exam.key === "final" ? "emerald" : "brand";
+  const accent = accentForExam(exam.key);
   const totalQ = exam.chapters.reduce((s, ch) => s + ch.questions.length, 0);
 
   return (
@@ -47,6 +48,7 @@ export default function ExamPage({ params }: PageProps) {
           className="inline-flex items-center gap-1 text-sm text-slate-500 hover:text-slate-700"
         >
           <svg
+            aria-hidden="true"
             className="w-4 h-4"
             fill="none"
             stroke="currentColor"

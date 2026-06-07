@@ -121,6 +121,7 @@ export default function ExamSection({ exam, accent = "brand" }: Props) {
 function Arrow({ className = "" }: { className?: string }) {
   return (
     <svg
+      aria-hidden="true"
       className={`w-6 h-6 group-hover:translate-x-1 transition ${className}`}
       fill="none"
       stroke="currentColor"

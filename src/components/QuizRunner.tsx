@@ -227,7 +227,7 @@ export default function QuizRunner({
           href={backHref || "/"}
           className="text-sm text-slate-500 hover:text-slate-700"
         >
-          ← 홈
+          ← 나가기
         </Link>
       </header>
 
