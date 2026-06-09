@@ -13,6 +13,8 @@ interface Props {
   initialAnswer?: number | string | null;
   /** 해설을 무조건 보여줄지 (결과화면 리뷰용) */
   forceReveal?: boolean;
+  /** 정답 모아보기: 입력 없이 정답·해설만 표시(채점 배지 숨김, 단답형 입력칸 숨김) */
+  answerKey?: boolean;
   onAnswer: (value: number | string, correct: boolean) => void;
 }
 
@@ -54,6 +56,7 @@ export default function QuestionView({
   immediate,
   initialAnswer,
   forceReveal,
+  answerKey,
   onAnswer,
 }: Props) {
   const answerParts = useMemo(
@@ -129,7 +132,12 @@ export default function QuestionView({
     onAnswer(user, correct);
   }
 
-  const options = [1, 2, 3, 4, 5];
+  // 보기 수는 데이터에 맞춰 가변 (O/X 판정형 등 4지선다 지원)
+  const optionCount =
+    question.type === "multiple_choice" && question.options?.length
+      ? question.options.length
+      : 5;
+  const options = Array.from({ length: optionCount }, (_, i) => i + 1);
   const circle = ["①", "②", "③", "④", "⑤"];
 
   return (
@@ -171,7 +179,7 @@ export default function QuestionView({
             );
           })}
         </div>
-      ) : answerParts ? (
+      ) : answerKey ? null : answerParts ? (
         <div className="mt-5">
           <label className="block text-sm font-semibold text-slate-700 mb-2">
             정답 입력 ({answerParts.length}개)
@@ -241,21 +249,23 @@ export default function QuestionView({
       {reveal && (
         <div
           className={`mt-5 rounded-xl border-2 p-4 ${
-            isCorrectNow
+            answerKey || isCorrectNow
               ? "border-emerald-200 bg-emerald-50"
               : "border-rose-200 bg-rose-50"
           }`}
         >
           <div className="flex items-center gap-2 mb-2">
-            <span
-              className={`text-xs font-bold px-2 py-0.5 rounded-full ${
-                isCorrectNow
-                  ? "bg-emerald-500 text-white"
-                  : "bg-rose-500 text-white"
-              }`}
-            >
-              {isCorrectNow ? "정답" : "오답"}
-            </span>
+            {!answerKey && (
+              <span
+                className={`text-xs font-bold px-2 py-0.5 rounded-full ${
+                  isCorrectNow
+                    ? "bg-emerald-500 text-white"
+                    : "bg-rose-500 text-white"
+                }`}
+              >
+                {isCorrectNow ? "정답" : "오답"}
+              </span>
+            )}
             <span className="text-sm font-semibold text-slate-800">
               정답: {question.correctAnswerLabel}
             </span>

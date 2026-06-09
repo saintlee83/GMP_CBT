@@ -1,0 +1,1846 @@
+{
+  "summary": "Read 87 footer crops to extract official 정답 (answer key) + chapter per question",
+  "agentCount": 10,
+  "logs": [
+    "Reading 87 footer crops in 10 chunks to extract the official answer key",
+    "Collected 107 answer entries from 46 answer-footers"
+  ],
+  "result": {
+    "pages": [
+      {
+        "page": 1,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 2,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 3,
+        "hasAnswerFooter": true,
+        "chapterNum": 1,
+        "chapterName": "의료기기 표시·기재의 이해",
+        "answers": [
+          {
+            "qnum": 1,
+            "answer": 5
+          }
+        ]
+      },
+      {
+        "page": 4,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 5,
+        "hasAnswerFooter": true,
+        "chapterNum": 1,
+        "chapterName": "의료기기 표시·기재의 이해",
+        "answers": [
+          {
+            "qnum": 2,
+            "answer": 3
+          },
+          {
+            "qnum": 3,
+            "answer": 5
+          }
+        ]
+      },
+      {
+        "page": 6,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 7,
+        "hasAnswerFooter": true,
+        "chapterNum": 1,
+        "chapterName": "의료기기 표시·기재의 이해",
+        "answers": [
+          {
+            "qnum": 4,
+            "answer": 4
+          },
+          {
+            "qnum": 5,
+            "answer": 3
+          }
+        ]
+      },
+      {
+        "page": 8,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 9,
+        "hasAnswerFooter": true,
+        "chapterNum": 1,
+        "chapterName": "의료기기 표시·기재의 이해",
+        "answers": [
+          {
+            "qnum": 6,
+            "answer": 1
+          },
+          {
+            "qnum": 7,
+            "answer": 2
+          }
+        ]
+      },
+      {
+        "page": 10,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 11,
+        "hasAnswerFooter": true,
+        "chapterNum": 1,
+        "chapterName": "의료기기 표시·기재의 이해",
+        "answers": [
+          {
+            "qnum": 8,
+            "answer": 4
+          },
+          {
+            "qnum": 9,
+            "answer": 4
+          },
+          {
+            "qnum": 10,
+            "answer": 2
+          }
+        ]
+      },
+      {
+        "page": 12,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 13,
+        "hasAnswerFooter": true,
+        "chapterNum": 1,
+        "chapterName": "의료기기 표시·기재의 이해",
+        "answers": [
+          {
+            "qnum": 11,
+            "answer": 4
+          },
+          {
+            "qnum": 12,
+            "answer": 2
+          }
+        ]
+      },
+      {
+        "page": 14,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 15,
+        "hasAnswerFooter": true,
+        "chapterNum": 1,
+        "chapterName": "의료기기 표시·기재의 이해",
+        "answers": [
+          {
+            "qnum": 13,
+            "answer": 2
+          },
+          {
+            "qnum": 14,
+            "answer": 5
+          },
+          {
+            "qnum": 15,
+            "answer": 0
+          }
+        ]
+      },
+      {
+        "page": 16,
+        "hasAnswerFooter": true,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": [
+          {
+            "qnum": 16,
+            "answer": 0
+          }
+        ]
+      },
+      {
+        "page": 17,
+        "hasAnswerFooter": true,
+        "chapterNum": 2,
+        "chapterName": "광고",
+        "answers": [
+          {
+            "qnum": 1,
+            "answer": 2
+          }
+        ]
+      },
+      {
+        "page": 18,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 19,
+        "hasAnswerFooter": true,
+        "chapterNum": 2,
+        "chapterName": "광고",
+        "answers": [
+          {
+            "qnum": 2,
+            "answer": 2
+          },
+          {
+            "qnum": 3,
+            "answer": 1
+          }
+        ]
+      },
+      {
+        "page": 20,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 21,
+        "hasAnswerFooter": true,
+        "chapterNum": 2,
+        "chapterName": "광고",
+        "answers": [
+          {
+            "qnum": 4,
+            "answer": 2
+          },
+          {
+            "qnum": 5,
+            "answer": 1
+          }
+        ]
+      },
+      {
+        "page": 22,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 23,
+        "hasAnswerFooter": true,
+        "chapterNum": 2,
+        "chapterName": "광고",
+        "answers": [
+          {
+            "qnum": 6,
+            "answer": 4
+          },
+          {
+            "qnum": 7,
+            "answer": 2
+          }
+        ]
+      },
+      {
+        "page": 24,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 25,
+        "hasAnswerFooter": true,
+        "chapterNum": 2,
+        "chapterName": "광고",
+        "answers": [
+          {
+            "qnum": 8,
+            "answer": 3
+          },
+          {
+            "qnum": 9,
+            "answer": 3
+          }
+        ]
+      },
+      {
+        "page": 26,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 27,
+        "hasAnswerFooter": true,
+        "chapterNum": 2,
+        "chapterName": "광고",
+        "answers": [
+          {
+            "qnum": 10,
+            "answer": 4
+          },
+          {
+            "qnum": 11,
+            "answer": 3
+          }
+        ]
+      },
+      {
+        "page": 28,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 29,
+        "hasAnswerFooter": true,
+        "chapterNum": 3,
+        "chapterName": "부작용",
+        "answers": [
+          {
+            "qnum": 1,
+            "answer": 2
+          },
+          {
+            "qnum": 2,
+            "answer": 2
+          }
+        ]
+      },
+      {
+        "page": 30,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 31,
+        "hasAnswerFooter": true,
+        "chapterNum": 3,
+        "chapterName": "부작용",
+        "answers": [
+          {
+            "qnum": 3,
+            "answer": 4
+          },
+          {
+            "qnum": 4,
+            "answer": 1
+          }
+        ]
+      },
+      {
+        "page": 32,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 33,
+        "hasAnswerFooter": true,
+        "chapterNum": 3,
+        "chapterName": "부작용",
+        "answers": [
+          {
+            "qnum": 5,
+            "answer": 1
+          },
+          {
+            "qnum": 6,
+            "answer": 2
+          }
+        ]
+      },
+      {
+        "page": 34,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 35,
+        "hasAnswerFooter": true,
+        "chapterNum": 3,
+        "chapterName": "부작용",
+        "answers": [
+          {
+            "qnum": 7,
+            "answer": 1
+          },
+          {
+            "qnum": 8,
+            "answer": 2
+          }
+        ]
+      },
+      {
+        "page": 36,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 37,
+        "hasAnswerFooter": true,
+        "chapterNum": 3,
+        "chapterName": "부작용",
+        "answers": [
+          {
+            "qnum": 9,
+            "answer": 0
+          },
+          {
+            "qnum": 10,
+            "answer": 0
+          }
+        ]
+      },
+      {
+        "page": 38,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 39,
+        "hasAnswerFooter": true,
+        "chapterNum": 4,
+        "chapterName": "이물 발견 보고",
+        "answers": [
+          {
+            "qnum": 1,
+            "answer": 1
+          },
+          {
+            "qnum": 2,
+            "answer": 1
+          },
+          {
+            "qnum": 3,
+            "answer": 4
+          }
+        ]
+      },
+      {
+        "page": 40,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 41,
+        "hasAnswerFooter": true,
+        "chapterNum": 4,
+        "chapterName": "이물 발견 보고",
+        "answers": [
+          {
+            "qnum": 4,
+            "answer": 1
+          },
+          {
+            "qnum": 5,
+            "answer": 4
+          },
+          {
+            "qnum": 6,
+            "answer": 2
+          }
+        ]
+      },
+      {
+        "page": 42,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 43,
+        "hasAnswerFooter": true,
+        "chapterNum": 4,
+        "chapterName": "이물 발견 보고",
+        "answers": [
+          {
+            "qnum": 7,
+            "answer": 2
+          },
+          {
+            "qnum": 8,
+            "answer": 5
+          },
+          {
+            "qnum": 9,
+            "answer": 3
+          },
+          {
+            "qnum": 10,
+            "answer": 0
+          }
+        ]
+      },
+      {
+        "page": 44,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 45,
+        "hasAnswerFooter": true,
+        "chapterNum": 5,
+        "chapterName": "재평가",
+        "answers": [
+          {
+            "qnum": 1,
+            "answer": 1
+          },
+          {
+            "qnum": 2,
+            "answer": 2
+          },
+          {
+            "qnum": 3,
+            "answer": 2
+          },
+          {
+            "qnum": 4,
+            "answer": 2
+          }
+        ]
+      },
+      {
+        "page": 46,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 47,
+        "hasAnswerFooter": true,
+        "chapterNum": 5,
+        "chapterName": "재평가",
+        "answers": [
+          {
+            "qnum": 5,
+            "answer": 3
+          },
+          {
+            "qnum": 6,
+            "answer": 2
+          },
+          {
+            "qnum": 7,
+            "answer": 5
+          }
+        ]
+      },
+      {
+        "page": 48,
+        "hasAnswerFooter": true,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": [
+          {
+            "qnum": 8,
+            "answer": 1
+          },
+          {
+            "qnum": 9,
+            "answer": 4
+          }
+        ]
+      },
+      {
+        "page": 49,
+        "hasAnswerFooter": true,
+        "chapterNum": 6,
+        "chapterName": "재심사",
+        "answers": [
+          {
+            "qnum": 1,
+            "answer": 4
+          }
+        ]
+      },
+      {
+        "page": 50,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 51,
+        "hasAnswerFooter": true,
+        "chapterNum": 6,
+        "chapterName": "재심사",
+        "answers": [
+          {
+            "qnum": 2,
+            "answer": 2
+          },
+          {
+            "qnum": 3,
+            "answer": 4
+          },
+          {
+            "qnum": 4,
+            "answer": 3
+          }
+        ]
+      },
+      {
+        "page": 52,
+        "hasAnswerFooter": true,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": [
+          {
+            "qnum": 5,
+            "answer": 2
+          }
+        ]
+      },
+      {
+        "page": 53,
+        "hasAnswerFooter": true,
+        "chapterNum": 7,
+        "chapterName": "의료기기 추적관리",
+        "answers": [
+          {
+            "qnum": 1,
+            "answer": 2
+          }
+        ]
+      },
+      {
+        "page": 54,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 55,
+        "hasAnswerFooter": true,
+        "chapterNum": 7,
+        "chapterName": "의료기기 추적관리",
+        "answers": [
+          {
+            "qnum": 2,
+            "answer": 1
+          },
+          {
+            "qnum": 3,
+            "answer": 1
+          },
+          {
+            "qnum": 4,
+            "answer": 5
+          }
+        ]
+      },
+      {
+        "page": 56,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 57,
+        "hasAnswerFooter": true,
+        "chapterNum": 7,
+        "chapterName": "의료기기 추적관리",
+        "answers": [
+          {
+            "qnum": 5,
+            "answer": 5
+          },
+          {
+            "qnum": 6,
+            "answer": 3
+          }
+        ]
+      },
+      {
+        "page": 58,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 59,
+        "hasAnswerFooter": true,
+        "chapterNum": 7,
+        "chapterName": "의료기기 추적관리",
+        "answers": [
+          {
+            "qnum": 7,
+            "answer": 4
+          },
+          {
+            "qnum": 8,
+            "answer": 5
+          }
+        ]
+      },
+      {
+        "page": 60,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 61,
+        "hasAnswerFooter": true,
+        "chapterNum": 7,
+        "chapterName": "의료기기 추적관리",
+        "answers": [
+          {
+            "qnum": 9,
+            "answer": 1
+          },
+          {
+            "qnum": 10,
+            "answer": 3
+          },
+          {
+            "qnum": 11,
+            "answer": 3
+          }
+        ]
+      },
+      {
+        "page": 62,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 63,
+        "hasAnswerFooter": true,
+        "chapterNum": 7,
+        "chapterName": "의료기기 추적관리",
+        "answers": [
+          {
+            "qnum": 12,
+            "answer": 2
+          },
+          {
+            "qnum": 13,
+            "answer": 3
+          }
+        ]
+      },
+      {
+        "page": 64,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 65,
+        "hasAnswerFooter": true,
+        "chapterNum": 7,
+        "chapterName": "의료기기 추적관리",
+        "answers": [
+          {
+            "qnum": 14,
+            "answer": 4
+          },
+          {
+            "qnum": 15,
+            "answer": 0
+          },
+          {
+            "qnum": 16,
+            "answer": 0
+          }
+        ]
+      },
+      {
+        "page": 66,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 67,
+        "hasAnswerFooter": true,
+        "chapterNum": 8,
+        "chapterName": "보고와 검사, 회수·폐기, 사용중지 명령",
+        "answers": [
+          {
+            "qnum": 1,
+            "answer": 5
+          },
+          {
+            "qnum": 2,
+            "answer": 1
+          },
+          {
+            "qnum": 3,
+            "answer": 5
+          }
+        ]
+      },
+      {
+        "page": 68,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 69,
+        "hasAnswerFooter": true,
+        "chapterNum": 8,
+        "chapterName": "보고와 검사, 회수·폐기, 사용중지 명령",
+        "answers": [
+          {
+            "qnum": 4,
+            "answer": 4
+          },
+          {
+            "qnum": 5,
+            "answer": 1
+          }
+        ]
+      },
+      {
+        "page": 70,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 71,
+        "hasAnswerFooter": true,
+        "chapterNum": 8,
+        "chapterName": "보고와 검사, 회수·폐기, 사용중지 명령",
+        "answers": [
+          {
+            "qnum": 6,
+            "answer": 1
+          },
+          {
+            "qnum": 7,
+            "answer": 4
+          },
+          {
+            "qnum": 8,
+            "answer": 5
+          }
+        ]
+      },
+      {
+        "page": 72,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 73,
+        "hasAnswerFooter": true,
+        "chapterNum": 8,
+        "chapterName": "보고와 검사, 회수·폐기, 사용중지 명령",
+        "answers": [
+          {
+            "qnum": 9,
+            "answer": 1
+          },
+          {
+            "qnum": 10,
+            "answer": 5
+          }
+        ]
+      },
+      {
+        "page": 74,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 75,
+        "hasAnswerFooter": true,
+        "chapterNum": 8,
+        "chapterName": "보고와 검사, 회수·폐기, 사용중지 명령",
+        "answers": [
+          {
+            "qnum": 11,
+            "answer": 3
+          },
+          {
+            "qnum": 12,
+            "answer": 1
+          }
+        ]
+      },
+      {
+        "page": 76,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 77,
+        "hasAnswerFooter": true,
+        "chapterNum": 8,
+        "chapterName": "보고와 검사, 회수·폐기, 사용중지 명령",
+        "answers": [
+          {
+            "qnum": 13,
+            "answer": 1
+          },
+          {
+            "qnum": 14,
+            "answer": 1
+          }
+        ]
+      },
+      {
+        "page": 78,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 79,
+        "hasAnswerFooter": true,
+        "chapterNum": 8,
+        "chapterName": "보고와 검사, 회수·폐기, 사용중지 명령",
+        "answers": [
+          {
+            "qnum": 15,
+            "answer": 3
+          },
+          {
+            "qnum": 16,
+            "answer": 0
+          },
+          {
+            "qnum": 17,
+            "answer": 0
+          }
+        ]
+      },
+      {
+        "page": 80,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 81,
+        "hasAnswerFooter": true,
+        "chapterNum": 9,
+        "chapterName": "벌칙, 과징금, 과태료, 행정처분 및 의료기기 표준코드(UDI)",
+        "answers": [
+          {
+            "qnum": 1,
+            "answer": 3
+          },
+          {
+            "qnum": 2,
+            "answer": 3
+          }
+        ]
+      },
+      {
+        "page": 82,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 83,
+        "hasAnswerFooter": true,
+        "chapterNum": 9,
+        "chapterName": "벌칙, 과징금, 과태료, 행정처분 및 의료기기 표준코드(UDI)",
+        "answers": [
+          {
+            "qnum": 3,
+            "answer": 3
+          },
+          {
+            "qnum": 4,
+            "answer": 5
+          },
+          {
+            "qnum": 5,
+            "answer": 5
+          },
+          {
+            "qnum": 6,
+            "answer": 3
+          }
+        ]
+      },
+      {
+        "page": 84,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 85,
+        "hasAnswerFooter": true,
+        "chapterNum": 9,
+        "chapterName": "벌칙, 과징금, 과태료, 행정처분 및 의료기기 표준코드(UDI)",
+        "answers": [
+          {
+            "qnum": 7,
+            "answer": 4
+          },
+          {
+            "qnum": 8,
+            "answer": 4
+          },
+          {
+            "qnum": 9,
+            "answer": 3
+          },
+          {
+            "qnum": 10,
+            "answer": 3
+          }
+        ]
+      },
+      {
+        "page": 86,
+        "hasAnswerFooter": false,
+        "chapterNum": 0,
+        "chapterName": "",
+        "answers": []
+      },
+      {
+        "page": 87,
+        "hasAnswerFooter": true,
+        "chapterNum": 9,
+        "chapterName": "벌칙, 과징금, 과태료, 행정처분 및 의료기기 표준코드(UDI)",
+        "answers": [
+          {
+            "qnum": 11,
+            "answer": 2
+          },
+          {
+            "qnum": 12,
+            "answer": 0
+          },
+          {
+            "qnum": 13,
+            "answer": 0
+          }
+        ]
+      }
+    ],
+    "key": [
+      {
+        "page": 3,
+        "chapterNum": 1,
+        "chapterName": "의료기기 표시·기재의 이해",
+        "qnum": 1,
+        "answer": 5
+      },
+      {
+        "page": 5,
+        "chapterNum": 1,
+        "chapterName": "의료기기 표시·기재의 이해",
+        "qnum": 2,
+        "answer": 3
+      },
+      {
+        "page": 5,
+        "chapterNum": 1,
+        "chapterName": "의료기기 표시·기재의 이해",
+        "qnum": 3,
+        "answer": 5
+      },
+      {
+        "page": 7,
+        "chapterNum": 1,
+        "chapterName": "의료기기 표시·기재의 이해",
+        "qnum": 4,
+        "answer": 4
+      },
+      {
+        "page": 7,
+        "chapterNum": 1,
+        "chapterName": "의료기기 표시·기재의 이해",
+        "qnum": 5,
+        "answer": 3
+      },
+      {
+        "page": 9,
+        "chapterNum": 1,
+        "chapterName": "의료기기 표시·기재의 이해",
+        "qnum": 6,
+        "answer": 1
+      },
+      {
+        "page": 9,
+        "chapterNum": 1,
+        "chapterName": "의료기기 표시·기재의 이해",
+        "qnum": 7,
+        "answer": 2
+      },
+      {
+        "page": 11,
+        "chapterNum": 1,
+        "chapterName": "의료기기 표시·기재의 이해",
+        "qnum": 8,
+        "answer": 4
+      },
+      {
+        "page": 11,
+        "chapterNum": 1,
+        "chapterName": "의료기기 표시·기재의 이해",
+        "qnum": 9,
+        "answer": 4
+      },
+      {
+        "page": 11,
+        "chapterNum": 1,
+        "chapterName": "의료기기 표시·기재의 이해",
+        "qnum": 10,
+        "answer": 2
+      },
+      {
+        "page": 13,
+        "chapterNum": 1,
+        "chapterName": "의료기기 표시·기재의 이해",
+        "qnum": 11,
+        "answer": 4
+      },
+      {
+        "page": 13,
+        "chapterNum": 1,
+        "chapterName": "의료기기 표시·기재의 이해",
+        "qnum": 12,
+        "answer": 2
+      },
+      {
+        "page": 15,
+        "chapterNum": 1,
+        "chapterName": "의료기기 표시·기재의 이해",
+        "qnum": 13,
+        "answer": 2
+      },
+      {
+        "page": 15,
+        "chapterNum": 1,
+        "chapterName": "의료기기 표시·기재의 이해",
+        "qnum": 14,
+        "answer": 5
+      },
+      {
+        "page": 15,
+        "chapterNum": 1,
+        "chapterName": "의료기기 표시·기재의 이해",
+        "qnum": 15,
+        "answer": 0
+      },
+      {
+        "page": 16,
+        "chapterNum": 0,
+        "chapterName": "",
+        "qnum": 16,
+        "answer": 0
+      },
+      {
+        "page": 17,
+        "chapterNum": 2,
+        "chapterName": "광고",
+        "qnum": 1,
+        "answer": 2
+      },
+      {
+        "page": 19,
+        "chapterNum": 2,
+        "chapterName": "광고",
+        "qnum": 2,
+        "answer": 2
+      },
+      {
+        "page": 19,
+        "chapterNum": 2,
+        "chapterName": "광고",
+        "qnum": 3,
+        "answer": 1
+      },
+      {
+        "page": 21,
+        "chapterNum": 2,
+        "chapterName": "광고",
+        "qnum": 4,
+        "answer": 2
+      },
+      {
+        "page": 21,
+        "chapterNum": 2,
+        "chapterName": "광고",
+        "qnum": 5,
+        "answer": 1
+      },
+      {
+        "page": 23,
+        "chapterNum": 2,
+        "chapterName": "광고",
+        "qnum": 6,
+        "answer": 4
+      },
+      {
+        "page": 23,
+        "chapterNum": 2,
+        "chapterName": "광고",
+        "qnum": 7,
+        "answer": 2
+      },
+      {
+        "page": 25,
+        "chapterNum": 2,
+        "chapterName": "광고",
+        "qnum": 8,
+        "answer": 3
+      },
+      {
+        "page": 25,
+        "chapterNum": 2,
+        "chapterName": "광고",
+        "qnum": 9,
+        "answer": 3
+      },
+      {
+        "page": 27,
+        "chapterNum": 2,
+        "chapterName": "광고",
+        "qnum": 10,
+        "answer": 4
+      },
+      {
+        "page": 27,
+        "chapterNum": 2,
+        "chapterName": "광고",
+        "qnum": 11,
+        "answer": 3
+      },
+      {
+        "page": 29,
+        "chapterNum": 3,
+        "chapterName": "부작용",
+        "qnum": 1,
+        "answer": 2
+      },
+      {
+        "page": 29,
+        "chapterNum": 3,
+        "chapterName": "부작용",
+        "qnum": 2,
+        "answer": 2
+      },
+      {
+        "page": 31,
+        "chapterNum": 3,
+        "chapterName": "부작용",
+        "qnum": 3,
+        "answer": 4
+      },
+      {
+        "page": 31,
+        "chapterNum": 3,
+        "chapterName": "부작용",
+        "qnum": 4,
+        "answer": 1
+      },
+      {
+        "page": 33,
+        "chapterNum": 3,
+        "chapterName": "부작용",
+        "qnum": 5,
+        "answer": 1
+      },
+      {
+        "page": 33,
+        "chapterNum": 3,
+        "chapterName": "부작용",
+        "qnum": 6,
+        "answer": 2
+      },
+      {
+        "page": 35,
+        "chapterNum": 3,
+        "chapterName": "부작용",
+        "qnum": 7,
+        "answer": 1
+      },
+      {
+        "page": 35,
+        "chapterNum": 3,
+        "chapterName": "부작용",
+        "qnum": 8,
+        "answer": 2
+      },
+      {
+        "page": 37,
+        "chapterNum": 3,
+        "chapterName": "부작용",
+        "qnum": 9,
+        "answer": 0
+      },
+      {
+        "page": 37,
+        "chapterNum": 3,
+        "chapterName": "부작용",
+        "qnum": 10,
+        "answer": 0
+      },
+      {
+        "page": 39,
+        "chapterNum": 4,
+        "chapterName": "이물 발견 보고",
+        "qnum": 1,
+        "answer": 1
+      },
+      {
+        "page": 39,
+        "chapterNum": 4,
+        "chapterName": "이물 발견 보고",
+        "qnum": 2,
+        "answer": 1
+      },
+      {
+        "page": 39,
+        "chapterNum": 4,
+        "chapterName": "이물 발견 보고",
+        "qnum": 3,
+        "answer": 4
+      },
+      {
+        "page": 41,
+        "chapterNum": 4,
+        "chapterName": "이물 발견 보고",
+        "qnum": 4,
+        "answer": 1
+      },
+      {
+        "page": 41,
+        "chapterNum": 4,
+        "chapterName": "이물 발견 보고",
+        "qnum": 5,
+        "answer": 4
+      },
+      {
+        "page": 41,
+        "chapterNum": 4,
+        "chapterName": "이물 발견 보고",
+        "qnum": 6,
+        "answer": 2
+      },
+      {
+        "page": 43,
+        "chapterNum": 4,
+        "chapterName": "이물 발견 보고",
+        "qnum": 7,
+        "answer": 2
+      },
+      {
+        "page": 43,
+        "chapterNum": 4,
+        "chapterName": "이물 발견 보고",
+        "qnum": 8,
+        "answer": 5
+      },
+      {
+        "page": 43,
+        "chapterNum": 4,
+        "chapterName": "이물 발견 보고",
+        "qnum": 9,
+        "answer": 3
+      },
+      {
+        "page": 43,
+        "chapterNum": 4,
+        "chapterName": "이물 발견 보고",
+        "qnum": 10,
+        "answer": 0
+      },
+      {
+        "page": 45,
+        "chapterNum": 5,
+        "chapterName": "재평가",
+        "qnum": 1,
+        "answer": 1
+      },
+      {
+        "page": 45,
+        "chapterNum": 5,
+        "chapterName": "재평가",
+        "qnum": 2,
+        "answer": 2
+      },
+      {
+        "page": 45,
+        "chapterNum": 5,
+        "chapterName": "재평가",
+        "qnum": 3,
+        "answer": 2
+      },
+      {
+        "page": 45,
+        "chapterNum": 5,
+        "chapterName": "재평가",
+        "qnum": 4,
+        "answer": 2
+      },
+      {
+        "page": 47,
+        "chapterNum": 5,
+        "chapterName": "재평가",
+        "qnum": 5,
+        "answer": 3
+      },
+      {
+        "page": 47,
+        "chapterNum": 5,
+        "chapterName": "재평가",
+        "qnum": 6,
+        "answer": 2
+      },
+      {
+        "page": 47,
+        "chapterNum": 5,
+        "chapterName": "재평가",
+        "qnum": 7,
+        "answer": 5
+      },
+      {
+        "page": 48,
+        "chapterNum": 0,
+        "chapterName": "",
+        "qnum": 8,
+        "answer": 1
+      },
+      {
+        "page": 48,
+        "chapterNum": 0,
+        "chapterName": "",
+        "qnum": 9,
+        "answer": 4
+      },
+      {
+        "page": 49,
+        "chapterNum": 6,
+        "chapterName": "재심사",
+        "qnum": 1,
+        "answer": 4
+      },
+      {
+        "page": 51,
+        "chapterNum": 6,
+        "chapterName": "재심사",
+        "qnum": 2,
+        "answer": 2
+      },
+      {
+        "page": 51,
+        "chapterNum": 6,
+        "chapterName": "재심사",
+        "qnum": 3,
+        "answer": 4
+      },
+      {
+        "page": 51,
+        "chapterNum": 6,
+        "chapterName": "재심사",
+        "qnum": 4,
+        "answer": 3
+      },
+      {
+        "page": 52,
+        "chapterNum": 0,
+        "chapterName": "",
+        "qnum": 5,
+        "answer": 2
+      },
+      {
+        "page": 53,
+        "chapterNum": 7,
+        "chapterName": "의료기기 추적관리",
+        "qnum": 1,
+        "answer": 2
+      },
+      {
+        "page": 55,
+        "chapterNum": 7,
+        "chapterName": "의료기기 추적관리",
+        "qnum": 2,
+        "answer": 1
+      },
+      {
+        "page": 55,
+        "chapterNum": 7,
+        "chapterName": "의료기기 추적관리",
+        "qnum": 3,
+        "answer": 1
+      },
+      {
+        "page": 55,
+        "chapterNum": 7,
+        "chapterName": "의료기기 추적관리",
+        "qnum": 4,
+        "answer": 5
+      },
+      {
+        "page": 57,
+        "chapterNum": 7,
+        "chapterName": "의료기기 추적관리",
+        "qnum": 5,
+        "answer": 5
+      },
+      {
+        "page": 57,
+        "chapterNum": 7,
+        "chapterName": "의료기기 추적관리",
+        "qnum": 6,
+        "answer": 3
+      },
+      {
+        "page": 59,
+        "chapterNum": 7,
+        "chapterName": "의료기기 추적관리",
+        "qnum": 7,
+        "answer": 4
+      },
+      {
+        "page": 59,
+        "chapterNum": 7,
+        "chapterName": "의료기기 추적관리",
+        "qnum": 8,
+        "answer": 5
+      },
+      {
+        "page": 61,
+        "chapterNum": 7,
+        "chapterName": "의료기기 추적관리",
+        "qnum": 9,
+        "answer": 1
+      },
+      {
+        "page": 61,
+        "chapterNum": 7,
+        "chapterName": "의료기기 추적관리",
+        "qnum": 10,
+        "answer": 3
+      },
+      {
+        "page": 61,
+        "chapterNum": 7,
+        "chapterName": "의료기기 추적관리",
+        "qnum": 11,
+        "answer": 3
+      },
+      {
+        "page": 63,
+        "chapterNum": 7,
+        "chapterName": "의료기기 추적관리",
+        "qnum": 12,
+        "answer": 2
+      },
+      {
+        "page": 63,
+        "chapterNum": 7,
+        "chapterName": "의료기기 추적관리",
+        "qnum": 13,
+        "answer": 3
+      },
+      {
+        "page": 65,
+        "chapterNum": 7,
+        "chapterName": "의료기기 추적관리",
+        "qnum": 14,
+        "answer": 4
+      },
+      {
+        "page": 65,
+        "chapterNum": 7,
+        "chapterName": "의료기기 추적관리",
+        "qnum": 15,
+        "answer": 0
+      },
+      {
+        "page": 65,
+        "chapterNum": 7,
+        "chapterName": "의료기기 추적관리",
+        "qnum": 16,
+        "answer": 0
+      },
+      {
+        "page": 67,
+        "chapterNum": 8,
+        "chapterName": "보고와 검사, 회수·폐기, 사용중지 명령",
+        "qnum": 1,
+        "answer": 5
+      },
+      {
+        "page": 67,
+        "chapterNum": 8,
+        "chapterName": "보고와 검사, 회수·폐기, 사용중지 명령",
+        "qnum": 2,
+        "answer": 1
+      },
+      {
+        "page": 67,
+        "chapterNum": 8,
+        "chapterName": "보고와 검사, 회수·폐기, 사용중지 명령",
+        "qnum": 3,
+        "answer": 5
+      },
+      {
+        "page": 69,
+        "chapterNum": 8,
+        "chapterName": "보고와 검사, 회수·폐기, 사용중지 명령",
+        "qnum": 4,
+        "answer": 4
+      },
+      {
+        "page": 69,
+        "chapterNum": 8,
+        "chapterName": "보고와 검사, 회수·폐기, 사용중지 명령",
+        "qnum": 5,
+        "answer": 1
+      },
+      {
+        "page": 71,
+        "chapterNum": 8,
+        "chapterName": "보고와 검사, 회수·폐기, 사용중지 명령",
+        "qnum": 6,
+        "answer": 1
+      },
+      {
+        "page": 71,
+        "chapterNum": 8,
+        "chapterName": "보고와 검사, 회수·폐기, 사용중지 명령",
+        "qnum": 7,
+        "answer": 4
+      },
+      {
+        "page": 71,
+        "chapterNum": 8,
+        "chapterName": "보고와 검사, 회수·폐기, 사용중지 명령",
+        "qnum": 8,
+        "answer": 5
+      },
+      {
+        "page": 73,
+        "chapterNum": 8,
+        "chapterName": "보고와 검사, 회수·폐기, 사용중지 명령",
+        "qnum": 9,
+        "answer": 1
+      },
+      {
+        "page": 73,
+        "chapterNum": 8,
+        "chapterName": "보고와 검사, 회수·폐기, 사용중지 명령",
+        "qnum": 10,
+        "answer": 5
+      },
+      {
+        "page": 75,
+        "chapterNum": 8,
+        "chapterName": "보고와 검사, 회수·폐기, 사용중지 명령",
+        "qnum": 11,
+        "answer": 3
+      },
+      {
+        "page": 75,
+        "chapterNum": 8,
+        "chapterName": "보고와 검사, 회수·폐기, 사용중지 명령",
+        "qnum": 12,
+        "answer": 1
+      },
+      {
+        "page": 77,
+        "chapterNum": 8,
+        "chapterName": "보고와 검사, 회수·폐기, 사용중지 명령",
+        "qnum": 13,
+        "answer": 1
+      },
+      {
+        "page": 77,
+        "chapterNum": 8,
+        "chapterName": "보고와 검사, 회수·폐기, 사용중지 명령",
+        "qnum": 14,
+        "answer": 1
+      },
+      {
+        "page": 79,
+        "chapterNum": 8,
+        "chapterName": "보고와 검사, 회수·폐기, 사용중지 명령",
+        "qnum": 15,
+        "answer": 3
+      },
+      {
+        "page": 79,
+        "chapterNum": 8,
+        "chapterName": "보고와 검사, 회수·폐기, 사용중지 명령",
+        "qnum": 16,
+        "answer": 0
+      },
+      {
+        "page": 79,
+        "chapterNum": 8,
+        "chapterName": "보고와 검사, 회수·폐기, 사용중지 명령",
+        "qnum": 17,
+        "answer": 0
+      },
+      {
+        "page": 81,
+        "chapterNum": 9,
+        "chapterName": "벌칙, 과징금, 과태료, 행정처분 및 의료기기 표준코드(UDI)",
+        "qnum": 1,
+        "answer": 3
+      },
+      {
+        "page": 81,
+        "chapterNum": 9,
+        "chapterName": "벌칙, 과징금, 과태료, 행정처분 및 의료기기 표준코드(UDI)",
+        "qnum": 2,
+        "answer": 3
+      },
+      {
+        "page": 83,
+        "chapterNum": 9,
+        "chapterName": "벌칙, 과징금, 과태료, 행정처분 및 의료기기 표준코드(UDI)",
+        "qnum": 3,
+        "answer": 3
+      },
+      {
+        "page": 83,
+        "chapterNum": 9,
+        "chapterName": "벌칙, 과징금, 과태료, 행정처분 및 의료기기 표준코드(UDI)",
+        "qnum": 4,
+        "answer": 5
+      },
+      {
+        "page": 83,
+        "chapterNum": 9,
+        "chapterName": "벌칙, 과징금, 과태료, 행정처분 및 의료기기 표준코드(UDI)",
+        "qnum": 5,
+        "answer": 5
+      },
+      {
+        "page": 83,
+        "chapterNum": 9,
+        "chapterName": "벌칙, 과징금, 과태료, 행정처분 및 의료기기 표준코드(UDI)",
+        "qnum": 6,
+        "answer": 3
+      },
+      {
+        "page": 85,
+        "chapterNum": 9,
+        "chapterName": "벌칙, 과징금, 과태료, 행정처분 및 의료기기 표준코드(UDI)",
+        "qnum": 7,
+        "answer": 4
+      },
+      {
+        "page": 85,
+        "chapterNum": 9,
+        "chapterName": "벌칙, 과징금, 과태료, 행정처분 및 의료기기 표준코드(UDI)",
+        "qnum": 8,
+        "answer": 4
+      },
+      {
+        "page": 85,
+        "chapterNum": 9,
+        "chapterName": "벌칙, 과징금, 과태료, 행정처분 및 의료기기 표준코드(UDI)",
+        "qnum": 9,
+        "answer": 3
+      },
+      {
+        "page": 85,
+        "chapterNum": 9,
+        "chapterName": "벌칙, 과징금, 과태료, 행정처분 및 의료기기 표준코드(UDI)",
+        "qnum": 10,
+        "answer": 3
+      },
+      {
+        "page": 87,
+        "chapterNum": 9,
+        "chapterName": "벌칙, 과징금, 과태료, 행정처분 및 의료기기 표준코드(UDI)",
+        "qnum": 11,
+        "answer": 2
+      },
+      {
+        "page": 87,
+        "chapterNum": 9,
+        "chapterName": "벌칙, 과징금, 과태료, 행정처분 및 의료기기 표준코드(UDI)",
+        "qnum": 12,
+        "answer": 0
+      },
+      {
+        "page": 87,
+        "chapterNum": 9,
+        "chapterName": "벌칙, 과징금, 과태료, 행정처분 및 의료기기 표준코드(UDI)",
+        "qnum": 13,
+        "answer": 0
+      }
+    ]
+  }
+}

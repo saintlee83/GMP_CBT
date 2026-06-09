@@ -120,25 +120,26 @@ def extract_options(stem_text: str) -> tuple[list[str] | None, str]:
     lines = stem_text.split("\n")
     circles = "①②③④⑤"
 
-    # 1) 인라인 연속 5줄
-    for start in range(len(lines) - 4):
-        ok = True
-        for offset in range(5):
-            line = lines[start + offset]
-            expected = circles[offset]
-            if not re.match(rf"^\s*{expected}\s+\S", line):
-                ok = False
-                break
-        if ok:
-            options = []
-            for offset in range(5):
-                line = lines[start + offset].lstrip()
+    # 1) 인라인 연속 N줄 (5 → 4 → 3 순으로 가장 큰 묶음 우선).
+    #    O/X 판정형 등 보기 수가 4개인 문제도 지원.
+    for n in (5, 4, 3):
+        for start in range(len(lines) - n + 1):
+            ok = True
+            for offset in range(n):
+                expected = circles[offset]
+                if not re.match(rf"^\s*{expected}\s+\S", lines[start + offset]):
+                    ok = False
+                    break
+            # 바로 다음 줄이 (n+1)번째 보기라면 더 큰 묶음이 있는 것이므로 건너뜀
+            if ok and n < 5 and start + n < len(lines):
+                if re.match(rf"^\s*{circles[n]}\s+\S", lines[start + n]):
+                    ok = False
+            if ok:
                 # 동그라미 뒤 공백 제거
-                options.append(line[1:].strip())
-            new_lines = lines[:start] + lines[start + 5:]
-            # 앞뒤에 남는 공백 라인 정리
-            new_stem = "\n".join(new_lines).strip()
-            return options, new_stem
+                options = [lines[start + o].lstrip()[1:].strip() for o in range(n)]
+                new_lines = lines[:start] + lines[start + n:]
+                # 앞뒤에 남는 공백 라인 정리
+                return options, "\n".join(new_lines).strip()
 
     # 2) 표 형식: 연속된 `| ①~⑤ | ... |` 5행
     row_indices: list[int] = []

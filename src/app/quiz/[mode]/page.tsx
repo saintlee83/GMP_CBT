@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import QuizRunner from "@/components/QuizRunner";
+import AnswerKeyView from "@/components/AnswerKeyView";
 import {
   allQuestions,
   chapters,
@@ -22,15 +23,17 @@ interface PageProps {
 }
 
 export function generateStaticParams() {
-  return [{ mode: "study" }, { mode: "exam" }];
+  return [{ mode: "study" }, { mode: "exam" }, { mode: "answers" }];
 }
 
 export default function QuizPage({ params, searchParams }: PageProps) {
   const modeParam = params.mode;
-  if (modeParam !== "study" && modeParam !== "exam") {
+  if (modeParam !== "study" && modeParam !== "exam" && modeParam !== "answers") {
     notFound();
   }
-  const mode = modeParam as "study" | "exam";
+  const isAnswers = modeParam === "answers";
+  // 정답 보기는 채점/진도가 없으므로 study 로직을 빌려 문항 목록만 구성한다.
+  const mode = (isAnswers ? "study" : modeParam) as "study" | "exam";
 
   const chapterKey = searchParams.chapter;
   const examKey = searchParams.exam;
@@ -100,6 +103,21 @@ export default function QuizPage({ params, searchParams }: PageProps) {
     subtitle = `총 ${questions.length}문항`;
     persistKey = `${mode}:ALL`;
     resetKey = `all:${mode}`;
+  }
+
+  if (isAnswers) {
+    return (
+      <main className="min-h-screen bg-[var(--color-bg)]">
+        <div className="mx-auto max-w-3xl px-4 py-6 sm:py-10">
+          <AnswerKeyView
+            title={title}
+            subtitle={subtitle}
+            questions={questions}
+            backHref={backHref}
+          />
+        </div>
+      </main>
+    );
   }
 
   return (
