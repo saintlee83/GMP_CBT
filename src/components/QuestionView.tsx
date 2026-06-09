@@ -21,14 +21,19 @@ interface AnswerPart {
   value: string; // 해당 파트의 정답 본문
 }
 
-// "ㄱ. 안전성, ㄴ. 유효성" / "ㄱ.1, ㄴ.1, ㄷ.3" 류 정답을 파트로 분해.
+// "ㄱ. 안전성, ㄴ. 유효성" / "ㄱ: 수리업자, ㄴ: 임대업자" / "ㄱ.1, ㄴ.1, ㄷ.3" 류
+// 정답을 파트로 분해. 라벨 구분자는 . : ) 모두 허용.
 // 2개 이상 파트로 쪼개지는 경우에만 배열 반환, 그 외에는 null.
+const PART_LABEL = "ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎ";
+const PART_LABEL_TEST = new RegExp(`[${PART_LABEL}]\\s*[.:)]`);
+const PART_SEG_RE = new RegExp(`^([${PART_LABEL}])\\s*[.:)]\\s*(.+)$`);
+
 function parseAnswerParts(raw: string): AnswerPart[] | null {
-  if (!/[ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎ]\./.test(raw)) return null;
+  if (!PART_LABEL_TEST.test(raw)) return null;
   const segments = raw.split(",").map((s) => s.trim()).filter(Boolean);
   const parts: AnswerPart[] = [];
   for (const seg of segments) {
-    const m = seg.match(/^([ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎ])\.\s*(.+)$/);
+    const m = seg.match(PART_SEG_RE);
     if (!m) return null;
     parts.push({ label: m[1], value: m[2].trim() });
   }
