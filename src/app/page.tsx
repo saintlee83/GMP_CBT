@@ -82,7 +82,7 @@ export default function HomePage() {
         <div className="mt-12 pt-8 border-t border-slate-200 text-xs text-slate-500 text-center">
           <p>
             출제 기준: 2021 의료기기 RA 전문가 2급 핵심문제집 (PART 04
-            품질관리(GMP) · PART 05 임상)
+            품질관리(GMP) · PART 05 임상 · PART 03 사후관리)
           </p>
           <p className="mt-1">학습용 목적 · 실제 시험과 다를 수 있습니다</p>
         </div>

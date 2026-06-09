@@ -47,24 +47,31 @@ CIRCLE_TO_NUM = {"①": 1, "②": 2, "③": 3, "④": 4, "⑤": 5}
 NUM_TO_CIRCLE = {v: k for k, v in CIRCLE_TO_NUM.items()}
 
 # 상위 시험 카테고리 정의.
-#   - glob: problems/ 안에서 매칭할 챕터 파일 패턴
-#   - prefix: 챕터 key 접두사 (예: "CH" -> CH01, "CL" -> CL03). 그룹 간 key 충돌 방지.
+#   - sources: 이 시험 그룹을 구성하는 마크다운 소스 목록. 각 소스는
+#       - glob: problems/ 안에서 매칭할 챕터 파일 패턴
+#       - prefix: 챕터 key 접두사 (예: "CH" -> CH01, "CL" -> CL03, "SM" -> SM05).
+#                 그룹/소스 간 key 충돌 방지를 위해 소스마다 다른 접두사를 사용한다.
+#   한 시험 그룹은 여러 PART(소스)를 포함할 수 있다. 챕터는 number 기준으로 정렬되므로
+#   소스별로 챕터 number 범위가 겹치지 않게 마크다운 헤더(`# CHAPTER NN`)를 매긴다.
 EXAM_GROUPS = [
     {
         "key": "midterm",
         "number": 1,
         "name": "중간고사",
         "description": "2021 의료기기 RA 전문가 2급 핵심문제집 PART 04 품질관리(GMP)",
-        "glob": "GMP_CH*.md",
-        "prefix": "CH",
+        "sources": [
+            {"glob": "GMP_CH*.md", "prefix": "CH"},
+        ],
     },
     {
         "key": "final",
         "number": 2,
         "name": "기말고사",
-        "description": "2021 의료기기 RA 전문가 2급 핵심문제집 PART 05 임상 (임상시험의 실시 / 통계적 원칙 및 관련 문서)",
-        "glob": "CL_CH*.md",
-        "prefix": "CL",
+        "description": "2021 의료기기 RA 전문가 2급 핵심문제집 PART 05 임상(임상시험의 실시 / 통계적 원칙 및 관련 문서) · PART 03 사후관리",
+        "sources": [
+            {"glob": "CL_CH*.md", "prefix": "CL"},
+            {"glob": "SM_CH*.md", "prefix": "SM"},
+        ],
     },
 ]
 
@@ -393,29 +400,30 @@ def main() -> None:
     exams: list[dict] = []
     total_q = 0
     for group in EXAM_GROUPS:
-        files = sorted(PROBLEMS_DIR.glob(group["glob"]))
-        if not files:
-            print(f"skip (파일 없음): {group['name']} <- {group['glob']}")
-            continue
-
         chapters: list[dict] = []
         print(f"[{group['name']}] ({group['key']})")
-        for f in files:
-            ch = parse_chapter_file(f, group["prefix"], group["key"])
-            if ch is None:
-                print(f"  skip (no chapter header): {f.name}")
+        for source in group["sources"]:
+            files = sorted(PROBLEMS_DIR.glob(source["glob"]))
+            if not files:
+                print(f"  skip (파일 없음): {source['glob']}")
                 continue
-            chapters.append(ch)
-            qs = ch["questions"]
-            mc = sum(1 for q in qs if q["type"] == "multiple_choice")
-            sa = sum(1 for q in qs if q["type"] == "short_answer")
-            total_q += len(qs)
-            print(
-                f"  {ch['key']} {ch['name']} ({f.name}): "
-                f"{len(qs)}문제 (객관식 {mc}, 단답형 {sa})"
-            )
+            for f in files:
+                ch = parse_chapter_file(f, source["prefix"], group["key"])
+                if ch is None:
+                    print(f"  skip (no chapter header): {f.name}")
+                    continue
+                chapters.append(ch)
+                qs = ch["questions"]
+                mc = sum(1 for q in qs if q["type"] == "multiple_choice")
+                sa = sum(1 for q in qs if q["type"] == "short_answer")
+                total_q += len(qs)
+                print(
+                    f"  {ch['key']} {ch['name']} ({f.name}): "
+                    f"{len(qs)}문제 (객관식 {mc}, 단답형 {sa})"
+                )
 
         if not chapters:
+            print(f"  (건너뜀: 챕터 없음)")
             continue
         # 챕터 정렬 (number 기준)
         chapters.sort(key=lambda c: c["number"])
