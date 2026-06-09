@@ -44,3 +44,4 @@ __pycache__/
 
 # 사후관리 PDF OCR 작업 산출물(이미지·중간 JSON) — 커밋 제외
 .pdf_work/
+.pdf_work2/
