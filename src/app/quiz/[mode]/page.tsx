@@ -22,9 +22,10 @@ interface PageProps {
   };
 }
 
-export function generateStaticParams() {
-  return [{ mode: "study" }, { mode: "exam" }, { mode: "answers" }];
-}
+// searchParams(chapter/exam/mode/limit)에 따라 매 요청마다 문항을 새로 골라야 하므로
+// 정적 프리렌더(빈 searchParams로 굳어 '전체 문제'로 빠지는 버그)를 끄고 동적 렌더링 강제.
+// generateStaticParams 를 두면 해당 경로가 프리렌더되어 force-dynamic 이 무시되므로 제거한다.
+export const dynamic = "force-dynamic";
 
 export default function QuizPage({ params, searchParams }: PageProps) {
   const modeParam = params.mode;
